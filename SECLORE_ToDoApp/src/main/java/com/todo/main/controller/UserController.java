@@ -34,7 +34,7 @@ public class UserController {
 		if (userDetails != null) {
 			httpSession.setAttribute("message", ("Welcome " + userDetails.getName()));
 			httpSession.setAttribute("user", userDetails);
-			return "alltasks";
+			return "redirect:/todo/alltasks";
 		}
 		httpSession.setAttribute("message", "INVALID CREDENTIALS");
 		return "login";
