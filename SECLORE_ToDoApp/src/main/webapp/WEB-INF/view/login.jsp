@@ -16,7 +16,7 @@
 <% session.removeAttribute("message");
 } %>
 
-
+ 
 <form action="authenticate" method="post">
 <table>
 <tr>
