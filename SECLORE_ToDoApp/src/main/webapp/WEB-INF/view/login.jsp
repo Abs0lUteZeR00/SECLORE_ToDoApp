@@ -7,7 +7,8 @@
 <title>Login</title>
 </head>
 <body>
-<div style="margin-left: 15% ; margin-right: 15%">
+<div align="center">
+<div style="margin-left: 30% ; margin-right: 30%">
 <h1>Login page</h1>
 
 <%String message=(String)session.getAttribute("message");%>
@@ -21,19 +22,23 @@
 <table>
 <tr>
 <td>Email: </td>
-<td><input type="email" name="email"></td>
+<td><input type="email" name="email" required="required"></td>
 </tr>
 <tr>
 <td>Password: </td>
-<td><input type="password" name="password"></td>
+<td><input type="password" name="password" required="required"></td>
+</tr>
+<tr>
+<td colspan="2" align="center"><input type="submit" value="Login"></td>
 </tr>
 </table>
-<input type="submit" value="Login">
+
 </form>
 <br>
 <hr>
 <br>
 <a href="signup">Sign Up</a>
+</div>
 </div>
 </body>
 </html>

@@ -8,7 +8,8 @@
 <title>Signup</title>
 </head>
 <body>
- <div style="margin-right: 15%; margin-left: 15%">
+<div align="center">
+<div style="margin-left: 30% ; margin-right: 30%">
 <h1>Signup page</h1>
 
 <%String message=(String)session.getAttribute("message");%>
@@ -42,18 +43,43 @@
 </tr>
 <tr>
 <td>Password</td>
-<td><form:input type="password" name="password" path="password" required="required"/></td>
+<td><form:input id="password" type="password" name="password" path="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"  required="required"/></td>
 </tr>
 <tr>
 <td>Confirm Password</td>
-<td><input type="password" name="confirmPassword" required="required"></td>
+<td><input id="confirmpassword" type="password" name="confirmPassword"  required="required" onkeyup="validate_password()"></td>
 </tr>
 <tr>
-<td><input type="submit" value="Register"></td>
+<td colspan="3">
+<span id="wrong_pass_alert"></span>
+</td>
+</tr>
+<tr>
+<td colspan="2"><input id="submit" type="submit" value="Register"></td>
 </tr>
 </table>
 </form:form>
-  
+ <br>
+<hr>
+<br>
+<a href="/">Login</a>
 </div>
+</div>
+<script type="text/javascript">
+function validate_password() {
+	 
+    let password = document.getElementById('password').value;
+    let confirmPassword = document.getElementById('confirmpassword').value;
+    if (password != confirmPassword) {
+        document.getElementById('wrong_pass_alert').style.color = 'red';
+        document.getElementById('wrong_pass_alert').innerHTML= 'Use same password';
+        document.getElementById('submit').disabled = true;
+    } else {
+        document.getElementById('wrong_pass_alert').style.color = 'green';
+        document.getElementById('wrong_pass_alert').innerHTML ='Password Matched';
+        document.getElementById('submit').disabled = false;
+    }
+}
+</script>
 </body>
 </html>
