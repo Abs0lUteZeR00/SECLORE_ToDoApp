@@ -18,6 +18,11 @@ public class UserController {
 	@Autowired
 	private UserDetailsServiceInterface userDetailsService;
 
+	@RequestMapping(value = "/")
+	public String loginPage() {
+		return "login";
+	}
+	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String addUser(@ModelAttribute UserDetails userDetails, HttpSession httpSession) {
 		if (userDetailsService.addUser(userDetails) != null)
