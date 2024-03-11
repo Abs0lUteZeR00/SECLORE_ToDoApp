@@ -45,6 +45,7 @@ public class UserDetailsRepository implements UserDetailsRepositoryInterface{
 		int result=jdbcTemplate.update(preparedStatementCreator,keyHolder);
 		if(result>0) {
 			userDetails.setUserId(keyHolder.getKey().intValue());
+			userDetails.setPassword(null);
 			return userDetails;
 		}
 		

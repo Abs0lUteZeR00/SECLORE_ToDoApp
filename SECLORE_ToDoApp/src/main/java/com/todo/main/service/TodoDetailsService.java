@@ -13,7 +13,7 @@ import com.todo.main.repository.TodoDetailsRepositoryInterface;
 public class TodoDetailsService implements TodoDetailsServiceInterface {
 
 	@Autowired
-	TodoDetailsRepositoryInterface todoDetailsRepository;
+	private TodoDetailsRepositoryInterface todoDetailsRepository;
 
 	@Override
 	public TodoDetails addTodo(TodoDetails todoDetails) {
