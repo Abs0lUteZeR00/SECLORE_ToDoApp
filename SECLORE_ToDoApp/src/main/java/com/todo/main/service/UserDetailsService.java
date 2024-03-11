@@ -16,6 +16,12 @@ public class UserDetailsService implements UserDetailsServiceInterface{
 		// TODO Auto-generated method stub
 		return userDetailsRepository.addUser(userDetails);
 	}
+
+	@Override
+	public UserDetails validateUser(String email, String password) {
+		// TODO Auto-generated method stub
+		return userDetailsRepository.validateUser(email, password);
+	}
 	
 }
  

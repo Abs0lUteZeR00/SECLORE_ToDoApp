@@ -19,6 +19,7 @@ public class UserDetailsRepository implements UserDetailsRepositoryInterface{
 	private JdbcTemplate jdbcTemplate;
 	
 	private static final String ADD_USER="INSERT INTO user_details (name, country_code, phone_no, email, password) VALUES (?,?,?,?,?)";
+	private static final String GET_USER_BY_ID_PASSWORD="SELECT * FROM user_details WHERE email=? AND password=?";
 	
 	public UserDetails addUser(UserDetails userDetails) {
 		String name=userDetails.getName();
@@ -51,6 +52,20 @@ public class UserDetailsRepository implements UserDetailsRepositoryInterface{
 			return null;
 		}
 		return null; 
+	}
+	
+	public UserDetails validateUser(String email, String password) {
+		try {
+		Object[] args= {email,password};
+		UserDetails userDetails=jdbcTemplate.queryForObject(GET_USER_BY_ID_PASSWORD, new UserDetailsRowMapper(), args);
+		if(userDetails!=null) {
+			userDetails.setPassword(null);
+			return userDetails;
+		}
+		}catch(Exception e) {
+			return null;
+		}
+		return null;
 	}
 		
 }
