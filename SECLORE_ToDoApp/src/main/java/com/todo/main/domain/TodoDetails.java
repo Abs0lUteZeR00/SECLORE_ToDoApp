@@ -1,15 +1,15 @@
 package com.todo.main.domain;
 
-public class TaskDetails {
+public class TodoDetails {
 	private int taskId;
 	private UserDetails userDetails;
 	private String title;
 	private String description;
 	private String status;
-	public TaskDetails() {
+	public TodoDetails() {
 		// TODO Auto-generated constructor stub
 	}
-	public TaskDetails(int taskId, UserDetails userDetails, String title, String description, String status) {
+	public TodoDetails(int taskId, UserDetails userDetails, String title, String description, String status) {
 		super();
 		this.taskId = taskId;
 		this.userDetails = userDetails;
@@ -49,7 +49,7 @@ public class TaskDetails {
 	}
 	@Override
 	public String toString() {
-		return "TaskDetails [taskId=" + taskId + ", userDetails=" + userDetails + ", title=" + title + ", description="
+		return "TodoDetails [taskId=" + taskId + ", userDetails=" + userDetails + ", title=" + title + ", description="
 				+ description + ", status=" + status + "]";
 	}
 	
