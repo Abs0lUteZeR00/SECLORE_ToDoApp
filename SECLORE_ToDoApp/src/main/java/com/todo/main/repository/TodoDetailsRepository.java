@@ -12,7 +12,7 @@ import com.todo.main.domain.UserDetails;
 @Repository
 public class TodoDetailsRepository implements TodoDetailsRepositoryInterface {
 	private static final String ADD_TASK = "declare @task_id int\r\n"
-			+ "set @task_id = (select MAX(task_id) from todo_list where user_id = 2)+1\r\n"
+			+ "set @task_id = (select MAX(task_id) from todo_list where user_id = ?)+1\r\n"
 			+ "if @task_id is null set @task_id = 1\r\n" + "insert into todo_list values (@task_id, ?, ?, ?, ?)";
 	private static final String UPDATE_TASK = "update todo_list set title = ?, description = ?,status =? where user_id = ? and task_id = ?";
 	private static final String DELETE_TASK = "delete from todo_list where user_id = ? and task_id = ?";
@@ -24,8 +24,8 @@ public class TodoDetailsRepository implements TodoDetailsRepositoryInterface {
 	@Override
 	public TodoDetails addTodo(TodoDetails todoDetails) {
 		try {
-			Object args[] = { todoDetails.getUserDetails().getUserId(), todoDetails.getTitle(),
-					todoDetails.getDescription(), todoDetails.getStatus() };
+			Object args[] = { todoDetails.getUserDetails().getUserId(), todoDetails.getUserDetails().getUserId(),
+					todoDetails.getTitle(), todoDetails.getDescription(), todoDetails.getStatus() };
 			if (jdbcTemplate.update(ADD_TASK, args) > 0)
 				return todoDetails;
 			else
