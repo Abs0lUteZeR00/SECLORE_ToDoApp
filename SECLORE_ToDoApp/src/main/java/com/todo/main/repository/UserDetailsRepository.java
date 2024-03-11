@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
 import com.todo.main.domain.UserDetails;
 
 @Repository
-public class UserDetailsRepository {
+public class UserDetailsRepository implements UserDetailsRepositoryInterface{
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
@@ -48,7 +48,7 @@ public class UserDetailsRepository {
 		}
 		
 		}catch(Exception e) {
-			System.out.println(e.getMessage());
+			return null;
 		}
 		return null;
 	}
