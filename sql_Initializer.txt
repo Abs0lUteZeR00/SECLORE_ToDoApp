@@ -2,9 +2,9 @@ use secloreTodo
 create table user_details(
 	user_id int identity,
 	name varchar(30) not null,
-	country_code varchar(3) not null,
+	country_code varchar(5) not null,
 	phone_no varchar(10) not null,
-	email varchar(30) not null,
+	email varchar(30) not null unique,
 	password varchar(32) not null,
 	constraint user_details_pk primary key(user_id),
 );
