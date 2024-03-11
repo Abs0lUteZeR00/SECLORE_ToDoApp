@@ -30,6 +30,10 @@
 </table>
 <input type="submit" value="Login">
 </form>
+<br>
+<hr>
+<br>
+<a href="signup">Sign Up</a>
 </div>
 </body>
 </html>

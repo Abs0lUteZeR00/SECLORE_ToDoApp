@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.todo.main.domain.UserDetails;
 import com.todo.main.service.UserDetailsServiceInterface;
@@ -21,6 +22,15 @@ public class UserController {
 	@RequestMapping(value = "/")
 	public String loginPage() {
 		return "login";
+	}
+	
+	@RequestMapping(value = "/signup")
+	public ModelAndView signUpPage() {
+		ModelAndView modelAndView=new ModelAndView();
+		UserDetails userDetails=new UserDetails();
+		modelAndView.addObject("userDetails", userDetails);
+		modelAndView.setViewName("signup");
+		return modelAndView;
 	}
 	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)

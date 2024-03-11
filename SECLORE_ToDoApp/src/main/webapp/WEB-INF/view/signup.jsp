@@ -21,12 +21,12 @@
 <table>
 <tr>
 <td>Name </td>
-<td><form:input type="text" name="name" path="name" required/></td> 
+<td><form:input type="text" name="name" path="name" required="required"/></td> 
 </tr>
 <tr>
 <td>Country Code </td>
 <td>
-<form:select path="countryCode" required>
+<form:select path="countryCode" required="required">
 <form:option value="+91">+91 India</form:option>
 <form:option value="+1">+1 US</form:option>
 </form:select>
@@ -34,19 +34,19 @@
 </tr>
 <tr>
 <td>Phone Number</td>
-<td><form:input type="tel" name="phoneNo" path="phoneNo" required/></td>
+<td><form:input type="tel" name="phoneNo" path="phoneNo" required="required"/></td>
 </tr>
 <tr>
 <td>Email</td>
-<td><form:input type="email" name="email" path="email" required/></td>
+<td><form:input type="email" name="email" path="email" required="required"/></td>
 </tr>
 <tr>
 <td>Password</td>
-<td><form:input type="password" name="password" path="password" required/></td>
+<td><form:input type="password" name="password" path="password" required="required"/></td>
 </tr>
 <tr>
 <td>Confirm Password</td>
-<td><input type="password" name="confirmPassword" required></td>
+<td><input type="password" name="confirmPassword" required="required"></td>
 </tr>
 <tr>
 <td><input type="submit" value="Register"></td>
