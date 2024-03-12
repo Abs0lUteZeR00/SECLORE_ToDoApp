@@ -42,7 +42,7 @@ public class TodoController {
 		return "redirect:/todo/alltasks";
 	}
 
-	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	@RequestMapping(value = "/delete")
 	public String deleteTask(@ModelAttribute TodoDetails todoDetails, HttpSession httpSession) {
 		UserDetails userDetails = (UserDetails) httpSession.getAttribute("user");
 		todoDetails.setUserDetails(userDetails);
@@ -57,6 +57,7 @@ public class TodoController {
 	public String updateTask(@ModelAttribute TodoDetails todoDetails, HttpSession httpSession) {
 		UserDetails userDetails = (UserDetails) httpSession.getAttribute("user");
 		todoDetails.setUserDetails(userDetails);
+		System.out.println(todoDetails);
 		if (todoDetailsService.updateTodo(todoDetails) != null)
 			httpSession.setAttribute("message", "TASK UPDATED SUCCESSFULLY");
 		else
@@ -83,8 +84,9 @@ public class TodoController {
 	public ModelAndView redirectUpdateDelete(@ModelAttribute TodoDetails todoDetails, @RequestParam String submit) {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("todoDetails", todoDetails);
-		if (submit.equals("delete"))
-			modelAndView.setViewName("redirect:/todo/delete");
+		
+		if (submit.equals("Delete")) 
+			modelAndView.setViewName("forward:/todo/delete");		
 		else
 			modelAndView.setViewName("edittask");
 		return modelAndView;
