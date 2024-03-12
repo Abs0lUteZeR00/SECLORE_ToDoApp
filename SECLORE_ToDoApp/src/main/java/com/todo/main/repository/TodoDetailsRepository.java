@@ -21,6 +21,7 @@ public class TodoDetailsRepository implements TodoDetailsRepositoryInterface {
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 
+	// Add a task to table todo_list for Logged In User
 	@Override
 	public TodoDetails addTodo(TodoDetails todoDetails) {
 		try {
@@ -35,6 +36,7 @@ public class TodoDetailsRepository implements TodoDetailsRepositoryInterface {
 		}
 	}
 
+	// Update the task selected by Logged In User in table todo_list 
 	@Override
 	public TodoDetails updateTodo(TodoDetails todoDetails) {
 		try {
@@ -48,6 +50,7 @@ public class TodoDetailsRepository implements TodoDetailsRepositoryInterface {
 		}
 	}
 
+	// Delete the task selected by Logged In User from table todo_list 
 	@Override
 	public boolean deleteTodo(TodoDetails todoDetails) {
 		try {
@@ -60,6 +63,7 @@ public class TodoDetailsRepository implements TodoDetailsRepositoryInterface {
 		}
 	}
 
+	// Returns a list of all tasks from table todo_list mapped to Logged In User
 	@Override
 	public List<TodoDetails> getTodoListByUserId(UserDetails userDetails) {
 		try {

@@ -14,6 +14,7 @@ import com.todo.main.service.UserDetailsServiceInterface;
 
 import jakarta.servlet.http.HttpSession;
 
+// Controller for User Related Activities
 @Controller
 public class UserController {
 	public static final String salt = "$2a$10$GlxyI6KSW12HiqRulvE67u";
@@ -21,17 +22,20 @@ public class UserController {
 	@Autowired
 	private UserDetailsServiceInterface userDetailsService;
 
+	// Base link redirected to login.jsp
 	@RequestMapping(value = "/")
 	public String loginPage() {
 		return "login";
 	}
 
+	// Invalidate session on logout and redirect to login.jsp
 	@RequestMapping(value = "/logout")
 	public String logout(HttpSession httpSession) {
 		httpSession.invalidate();
 		return "login";
 	}
 
+	// Add a model for mapping in jsp and redirect to signup.jsp
 	@RequestMapping(value = "/signup")
 	public ModelAndView signUpPage() {
 		ModelAndView modelAndView = new ModelAndView();
@@ -41,6 +45,7 @@ public class UserController {
 		return modelAndView;
 	}
 
+	// Redirect to login.jsp after attempting to add user in user database, with appropriate message
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String addUser(@ModelAttribute UserDetails userDetails, HttpSession httpSession) {
 		String hashedPassword = BCrypt.hashpw(userDetails.getPassword(), salt);
@@ -53,6 +58,8 @@ public class UserController {
 		return "login";
 	}
 
+	// redirect to login.jsp if authentication fails
+	// redirect to /alltasks in /todo controller in authentication is successful
 	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
 	public String authenticateUser(@RequestParam String email, @RequestParam String password, HttpSession httpSession) {
 		String hashedPassword = BCrypt.hashpw(password, salt);

@@ -21,6 +21,7 @@ public class UserDetailsRepository implements UserDetailsRepositoryInterface{
 	private static final String ADD_USER="INSERT INTO user_details (name, country_code, phone_no, email, password) VALUES (?,?,?,?,?)";
 	private static final String GET_USER_BY_ID_PASSWORD="SELECT * FROM user_details WHERE email=? AND password=?";
 	
+	// Add user in user_details table
 	public UserDetails addUser(UserDetails userDetails) {
 		String name=userDetails.getName();
 		String countryCode=userDetails.getCountryCode();
@@ -55,6 +56,7 @@ public class UserDetailsRepository implements UserDetailsRepositoryInterface{
 		return null; 
 	}
 	
+	// Check if a user with provided email and password exist
 	public UserDetails validateUser(String email, String password) {
 		try {
 		Object[] args= {email,password};

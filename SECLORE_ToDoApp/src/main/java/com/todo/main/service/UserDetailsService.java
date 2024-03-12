@@ -11,15 +11,15 @@ public class UserDetailsService implements UserDetailsServiceInterface{
 	@Autowired
 	UserDetailsRepositoryInterface userDetailsRepository;
 
+	// Add user in user_details table
 	@Override
 	public UserDetails addUser(UserDetails userDetails) {
-		// TODO Auto-generated method stub
 		return userDetailsRepository.addUser(userDetails);
 	}
 
+	// Check if a user with provided email and password exist
 	@Override
 	public UserDetails validateUser(String email, String password) {
-		// TODO Auto-generated method stub
 		return userDetailsRepository.validateUser(email, password);
 	}
 	
