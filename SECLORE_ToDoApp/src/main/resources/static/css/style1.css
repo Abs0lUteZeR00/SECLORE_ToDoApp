@@ -5,6 +5,12 @@ body {
     background-color: #f2f2f2;
 }
  
+nav{
+	display: flex;
+	justify-content: space-between;	
+}
+
+
 .container {
     width: 500px;
     margin: 0 auto;
@@ -34,6 +40,7 @@ input{
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    box-sizing: border-box;
 }
  
 input[type="submit"] {
@@ -56,6 +63,7 @@ textarea , select {
 	margin-bottom : 10px ; 
 	border : 1px solid #ccc ;
 	border-radius : 5px ; 
+	box-sizing: border-box;
 	}
 
 a {
@@ -65,4 +73,32 @@ a {
  
 a:hover {
     text-decoration: underline;
+}
+
+table {
+	width: 80%;
+	margin: auto;
+	border-collapse: collapse;
+	border-spacing: 0 10px;
+}
+
+tr {
+	border-width: 2px;
+	border-style: solid;	
+}
+
+.header-row {
+	border-color: #333;	
+}
+
+.PENDING {
+	border-color: #ff5555;
+}
+
+.INPROGRESS {
+	border-color: #fad338;
+}
+
+.COMPLETED {
+	border-color: #45a049;	
 }
