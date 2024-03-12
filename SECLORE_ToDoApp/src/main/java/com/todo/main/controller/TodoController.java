@@ -42,9 +42,9 @@ public class TodoController implements ErrorController{
 		UserDetails userDetails = (UserDetails) httpSession.getAttribute("user");
 		todoDetails.setUserDetails(userDetails);
 		if (todoDetailsService.addTodo(todoDetails) != null)
-			httpSession.setAttribute("message", "TASK ADDED SUCCESSFULLY");
+			httpSession.setAttribute("notification", "TASK ADDED SUCCESSFULLY");
 		else
-			httpSession.setAttribute("message", "TASK NOT ADDED! \n TRY AGAIN");
+			httpSession.setAttribute("notification", "TASK NOT ADDED! \n TRY AGAIN");
 		return "redirect:/todo/alltasks";
 	}
 
@@ -53,9 +53,9 @@ public class TodoController implements ErrorController{
 		UserDetails userDetails = (UserDetails) httpSession.getAttribute("user");
 		todoDetails.setUserDetails(userDetails);
 		if (todoDetailsService.deleteTodo(todoDetails))
-			httpSession.setAttribute("message", "TASK DELETED SUCCESSFULLY");
+			httpSession.setAttribute("notification", "TASK DELETED SUCCESSFULLY");
 		else
-			httpSession.setAttribute("message", "TASK NOT DELETED! \n TRY AGAIN");
+			httpSession.setAttribute("notification", "TASK NOT DELETED! \n TRY AGAIN");
 		return "redirect:/todo/alltasks";
 	}
 
@@ -65,9 +65,9 @@ public class TodoController implements ErrorController{
 		todoDetails.setUserDetails(userDetails);
 		System.out.println(todoDetails);
 		if (todoDetailsService.updateTodo(todoDetails) != null)
-			httpSession.setAttribute("message", "TASK UPDATED SUCCESSFULLY");
+			httpSession.setAttribute("notification", "TASK UPDATED SUCCESSFULLY");
 		else
-			httpSession.setAttribute("message", "TASK NOT UPDATED! \n TRY AGAIN");
+			httpSession.setAttribute("notification", "TASK NOT UPDATED! \n TRY AGAIN");
 		return "redirect:/todo/alltasks";
 	}
 
