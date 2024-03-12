@@ -18,7 +18,7 @@ public class ValidationInterceptor implements HandlerInterceptor {
 		HttpSession httpSession = request.getSession();
 		String uri = request.getRequestURI();
 
-		if (uri.equals("/") || uri.equals("/login") || uri.equals("/authenticate") || uri.equals("/register") || uri.equals("/signup")) {
+		if (uri.equals("/") || uri.equals("/login") || uri.equals("/authenticate") || uri.equals("/register") || uri.equals("/signup") || uri.equals("/css/style1.css")) {
 			return true;
 		}
 
