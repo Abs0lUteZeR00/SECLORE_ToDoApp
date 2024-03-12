@@ -17,6 +17,7 @@
 				<hr>
 				<form:form modelAttribute="todoDetails" action="/todo/update"
 					method="post">
+					<form:input path="taskId" value="${todoDetails.getTaskId()}" hidden="hidden" /> 
 					<p>TODO title</p>
 					<form:input path="title" value="${todoDetails.getTitle()}" maxlength="50"/>
 					<p>Description</p>

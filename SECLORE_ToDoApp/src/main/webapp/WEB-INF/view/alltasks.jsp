@@ -8,7 +8,6 @@
 <meta charset="ISO-8859-1">
 <title>All TODOs</title>
 <link rel="stylesheet" href="/css/style1.css" type="text/css">
-<script type="text/javascript" src="/scripts/stylescript" defer></script>
 </head>
 <body>
 	<nav>
