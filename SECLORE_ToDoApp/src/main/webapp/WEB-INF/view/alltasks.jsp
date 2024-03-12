@@ -15,7 +15,8 @@
 			<a href="/todo/addtask" class="nav-btn"> Add a TODO </a>
 		</div>
 		<div class="nav-item">
-			Welcome, <%=(String)session.getAttribute("name")%>
+			Welcome,
+			<%=(String) session.getAttribute("name")%>
 		</div>
 		<div class="nav-item">
 			<a href="/logout" class="nav-btn"> Logout</a>
@@ -23,9 +24,28 @@
 
 	</nav>
 	<h2>Your TODO List</h2>
+
 	<hr>
-	<%String message=(String)session.getAttribute("message");%>
-	<%if(message==null){ %>
+	<%
+	String notification = (String) session.getAttribute("notification");
+	%>
+	<%
+	if (notification != null) {
+	%>
+	<div style="align-items: center; text-align: center" id="notification">
+		<h3 style="color: white; background-color:green ;"><%=notification%></h3>
+	</div>
+	<%
+	session.removeAttribute("notification");
+	}
+	%>
+
+	<%
+	String message = (String) session.getAttribute("message");
+	%>
+	<%
+	if (message == null) {
+	%>
 	<table class="todo-list">
 		<tr class="header-row">
 			<th>Task ID</th>
@@ -56,10 +76,21 @@
 			</tr>
 		</c:forEach>
 	</table>
-	<%} %>
-	<%if(message!=null) {%>
-	<p style="color: red;"><%=message %></p>
-	<% session.removeAttribute("message");
-} %>
+	<%
+	}
+	%>
+	<%
+	if (message != null) {
+	%>
+	<p style="color: red;"><%=message%></p>
+	<%
+	session.removeAttribute("message");
+	}
+	%>
+	<script type="text/javascript">
+		setTimeout(function() {
+			document.getElementById('notification').innerHTML = '';
+		}, 5000);
+	</script>
 </body>
 </html>
