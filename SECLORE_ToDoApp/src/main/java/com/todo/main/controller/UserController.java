@@ -23,16 +23,22 @@ public class UserController {
 	public String loginPage() {
 		return "login";
 	}
-	
+
+	@RequestMapping(value = "/logout")
+	public String logout(HttpSession httpSession) {
+		httpSession.invalidate();
+		return "logout";
+	}
+
 	@RequestMapping(value = "/signup")
 	public ModelAndView signUpPage() {
-		ModelAndView modelAndView=new ModelAndView();
-		UserDetails userDetails=new UserDetails();
+		ModelAndView modelAndView = new ModelAndView();
+		UserDetails userDetails = new UserDetails();
 		modelAndView.addObject("userDetails", userDetails);
 		modelAndView.setViewName("signup");
 		return modelAndView;
 	}
-	
+
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String addUser(@ModelAttribute UserDetails userDetails, HttpSession httpSession) {
 		if (userDetailsService.addUser(userDetails) != null)
