@@ -1,5 +1,6 @@
 package com.todo.main.controller;
 
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -15,6 +16,7 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class UserController {
+	public static final String salt = "$2a$10$GlxyI6KSW12HiqRulvE67u";
 
 	@Autowired
 	private UserDetailsServiceInterface userDetailsService;
@@ -41,6 +43,8 @@ public class UserController {
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String addUser(@ModelAttribute UserDetails userDetails, HttpSession httpSession) {
+		String hashedPassword = BCrypt.hashpw(userDetails.getPassword(), salt);
+		userDetails.setPassword(hashedPassword);
 		if (userDetailsService.addUser(userDetails) != null)
 			httpSession.setAttribute("message", "USER ADDED SUCCESSFULLY");
 		else
@@ -51,7 +55,8 @@ public class UserController {
 
 	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
 	public String authenticateUser(@RequestParam String email, @RequestParam String password, HttpSession httpSession) {
-		UserDetails userDetails = userDetailsService.validateUser(email, password);
+		String hashedPassword = BCrypt.hashpw(password, salt);
+		UserDetails userDetails = userDetailsService.validateUser(email, hashedPassword);
 		if (userDetails != null) {
 			httpSession.setAttribute("message", ("Welcome " + userDetails.getName()));
 			httpSession.setAttribute("user", userDetails);
