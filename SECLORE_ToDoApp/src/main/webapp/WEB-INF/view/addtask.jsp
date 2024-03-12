@@ -18,7 +18,7 @@
 				<form:form modelAttribute="todoDetails" action="/todo/add"
 					method="post">
 					<p>TODO title</p>
-					<form:input path="title" maxlength="50"/>
+					<form:input path="title" maxlength="50" required = "required"/>
 					<p>Description</p>
 					<form:textarea path="description" maxlength="100"/>
 					<p>Status</p>

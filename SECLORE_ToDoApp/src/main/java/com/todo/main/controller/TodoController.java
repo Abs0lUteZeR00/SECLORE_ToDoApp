@@ -63,7 +63,6 @@ public class TodoController implements ErrorController{
 	public String updateTask(@ModelAttribute TodoDetails todoDetails, HttpSession httpSession) {
 		UserDetails userDetails = (UserDetails) httpSession.getAttribute("user");
 		todoDetails.setUserDetails(userDetails);
-		System.out.println(todoDetails);
 		if (todoDetailsService.updateTodo(todoDetails) != null)
 			httpSession.setAttribute("notification", "TASK UPDATED SUCCESSFULLY");
 		else

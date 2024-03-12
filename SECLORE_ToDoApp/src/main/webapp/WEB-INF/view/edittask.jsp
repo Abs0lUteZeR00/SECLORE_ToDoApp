@@ -19,7 +19,7 @@
 					method="post">
 					<form:input path="taskId" value="${todoDetails.getTaskId()}" hidden="hidden" /> 
 					<p>TODO title</p>
-					<form:input path="title" value="${todoDetails.getTitle()}" maxlength="50"/>
+					<form:input path="title" value="${todoDetails.getTitle()}" maxlength="50" required = "required"/>
 					<p>Description</p>
 					<form:textarea path="description"
 						value="${todoDetails.getDescription()}" maxlength="100"/>
