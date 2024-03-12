@@ -6,11 +6,13 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
+// Interceptor to check session before every request 
 public class ValidationInterceptor implements HandlerInterceptor {
 	public ValidationInterceptor() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
+	// Is user Object is not present in session, then will be redirected to login page
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
@@ -18,6 +20,7 @@ public class ValidationInterceptor implements HandlerInterceptor {
 		HttpSession httpSession = request.getSession();
 		String uri = request.getRequestURI();
 
+		// Cannot access URI except these if not authenticated
 		if (uri.equals("/") || uri.equals("/login") || uri.equals("/authenticate") || uri.equals("/register") || uri.equals("/signup") || uri.equals("/css/style1.css")) {
 			return true;
 		}

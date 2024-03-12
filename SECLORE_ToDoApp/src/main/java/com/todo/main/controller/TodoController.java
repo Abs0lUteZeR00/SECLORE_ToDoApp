@@ -17,18 +17,22 @@ import com.todo.main.service.TodoDetailsServiceInterface;
 
 import jakarta.servlet.http.HttpSession;
 
+//Controller for Task Related Activities
 @Controller
 @RequestMapping("/todo")
-public class TodoController implements ErrorController{
+public class TodoController implements ErrorController {
 
 	@Autowired
 	private TodoDetailsServiceInterface todoDetailsService;
-	
-	@RequestMapping("/error")
-    public String handleError() {
-        return "redirect:/todo/alltasks";
-    }
 
+	// If an authenticated user faces error, will be redirected /alltasks in same
+	// controller
+	@RequestMapping("/error")
+	public String handleError() {
+		return "redirect:/todo/alltasks";
+	}
+
+	// Redirects to addtask.jsp after adding a model attribute for mapping
 	@RequestMapping("/addtask")
 	public ModelAndView redirectAddTask() {
 		ModelAndView modelAndView = new ModelAndView();
@@ -37,6 +41,8 @@ public class TodoController implements ErrorController{
 		return modelAndView;
 	}
 
+	// Attempts to add a task in user's todo list and redirects to /alltasks in same
+	// controller
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String addTask(@ModelAttribute TodoDetails todoDetails, HttpSession httpSession) {
 		UserDetails userDetails = (UserDetails) httpSession.getAttribute("user");
@@ -48,6 +54,8 @@ public class TodoController implements ErrorController{
 		return "redirect:/todo/alltasks";
 	}
 
+	// Delete's a task from user's todo list and redirects to /alltasks in same
+	// controller
 	@RequestMapping(value = "/delete")
 	public String deleteTask(@ModelAttribute TodoDetails todoDetails, HttpSession httpSession) {
 		UserDetails userDetails = (UserDetails) httpSession.getAttribute("user");
@@ -59,6 +67,8 @@ public class TodoController implements ErrorController{
 		return "redirect:/todo/alltasks";
 	}
 
+	// Attempts to update a task in user's todo list and redirects to /alltasks in
+	// same controller
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String updateTask(@ModelAttribute TodoDetails todoDetails, HttpSession httpSession) {
 		UserDetails userDetails = (UserDetails) httpSession.getAttribute("user");
@@ -70,6 +80,8 @@ public class TodoController implements ErrorController{
 		return "redirect:/todo/alltasks";
 	}
 
+	// Fetches the todo list of user from database, adds it in a model to display
+	// and redirects to alltasks.jsp
 	@RequestMapping(value = "/alltasks")
 	public ModelAndView viewTodoList(HttpSession httpSession) {
 		ModelAndView modelAndView = new ModelAndView();
@@ -81,17 +93,20 @@ public class TodoController implements ErrorController{
 		else
 			httpSession.setAttribute("message", null);
 		modelAndView.addObject("todoList", todoList);
-		modelAndView.addObject("todoDetails",new TodoDetails());
+		modelAndView.addObject("todoDetails", new TodoDetails());
 		return modelAndView;
 	}
 
+	// Adds Model attribute in a model of new ModelAndView Object
+	// Forwards to /delete in same controller if user has selected delete in alltasks.jsp
+	// Redirects to edittask.jsp if user has selected edit
 	@RequestMapping(value = "/updatedelete", method = RequestMethod.POST)
 	public ModelAndView redirectUpdateDelete(@ModelAttribute TodoDetails todoDetails, @RequestParam String submit) {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("todoDetails", todoDetails);
-		
-		if (submit.equals("Delete")) 
-			modelAndView.setViewName("forward:/todo/delete");		
+
+		if (submit.equals("Delete"))
+			modelAndView.setViewName("forward:/todo/delete");
 		else
 			modelAndView.setViewName("edittask");
 		return modelAndView;
