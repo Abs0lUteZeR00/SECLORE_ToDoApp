@@ -6,10 +6,12 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Signup</title>
+<link rel="stylesheet" type="text/css" href="/css/style1.css">
 </head>
 <body>
+<div class="container">
 <div align="center">
-<div style="margin-left: 30% ; margin-right: 30%">
+<div style="margin-left: 20% ; margin-right: 20%">
 <h1>Signup page</h1>
 
 <%String message=(String)session.getAttribute("message");%>
@@ -22,7 +24,7 @@
 <table>
 <tr>
 <td>Name </td>
-<td><form:input type="text" name="name" path="name" required="required"/></td> 
+<td><form:input type="text" name="name" path="name" required="required" maxlength="30" /></td> 
 </tr>
 <tr>
 <td>Country Code </td>
@@ -35,15 +37,15 @@
 </tr>
 <tr>
 <td>Phone Number</td>
-<td><form:input type="tel" name="phoneNo" path="phoneNo" required="required"/></td>
+<td><form:input type="tel" name="phoneNo" path="phoneNo" required="required" maxlength="10"/></td>
 </tr>
 <tr>
 <td>Email</td>
-<td><form:input type="email" name="email" path="email" required="required"/></td>
+<td><form:input type="email" name="email" path="email" required="required" maxlength="30"/></td>
 </tr>
 <tr>
 <td>Password</td>
-<td><form:input id="password" type="password" name="password" path="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"  required="required"/></td>
+<td><form:input id="password" type="password" name="password" path="password" maxlength="22" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"  required="required"/></td>
 </tr>
 <tr>
 <td>Confirm Password</td>
@@ -63,6 +65,7 @@
 <hr>
 <br>
 <a href="/">Login</a>
+</div>
 </div>
 </div>
 <script type="text/javascript">

@@ -29,39 +29,30 @@
 					<th>Title</th>
 					<th>Description</th>
 					<th>Status</th>
-					<th colspan="2">Actions</th>
+					<th>Actions</th>
 				</tr>
 				<c:forEach var="todo" items="${todoList}">
-					<form:form modelAttribute="todoDetails"
-							name="form${todo.getTaskId()}" action="/todo/updatedelete"
-							method="post">
-						<form:input path="taskId" value="${todo.getTaskId()}"
-									hidden="hidden" /> 
-						<form:input path="title"
-									value="${todo.getTitle()}" hidden="hidden" />
-						<form:input	path="description" value="${todo.getDescription()}"
-									hidden="hidden" />
-						<form:input path="status"
-									value="${todo.getStatus()}" hidden="hidden" />
-					</form:form>
 					<tr>
-						
-							<td>
-									${todo.getTitle()}
-									</td>
-							<td>
-									${todo.getDescription()}
-									</td>
-							<td>
-									${todo.getStatus()}
-									</td>
-							<td><input type="submit" form="form${todo.getTaskId()}" value="Edit"
-								name="submit"></td>
-							<td><input type="submit" form="form${todo.getTaskId()}" value="Delete"
-								name="submit"></td>
-						
+						<td>
+								${todo.getTitle()}
+						</td>
+						<td>
+								${todo.getDescription()}
+						</td>
+						<td>
+								${todo.getStatus()}
+						</td>
+						<td>
+							<form:form modelAttribute="todoDetails"	action="/todo/updatedelete" method="post">
+								<form:input path="taskId" value="${todo.getTaskId()}" hidden="hidden" /> 
+								<form:input path="title" value="${todo.getTitle()}" hidden="hidden" />
+								<form:input	path="description" value="${todo.getDescription()}"	hidden="hidden" />
+								<form:input path="status" value="${todo.getStatus()}" hidden="hidden" />
+								<input type="submit" value="Edit" name="submit">
+								<input type="submit" value="Delete" name="submit">
+							</form:form>
+						</td>						
 					</tr>
-					
 				</c:forEach>
 			</table>
 		</c:otherwise>

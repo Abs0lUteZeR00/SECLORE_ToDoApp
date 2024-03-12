@@ -5,10 +5,12 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Login</title>
+<link rel="stylesheet" type="text/css" href="/css/style1.css">
 </head>
 <body>
+<div class="container">
 <div align="center">
-<div style="margin-left: 30% ; margin-right: 30%">
+<div style="margin-left: 20% ; margin-right: 20%">
 <h1>Login page</h1>
 
 <%String message=(String)session.getAttribute("message");%>
@@ -38,6 +40,7 @@
 <hr>
 <br>
 <a href="signup">Sign Up</a>
+</div>
 </div>
 </div>
 </body>
