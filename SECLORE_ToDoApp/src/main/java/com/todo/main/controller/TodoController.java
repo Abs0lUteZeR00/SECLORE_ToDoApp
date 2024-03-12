@@ -24,9 +24,11 @@ public class TodoController {
 	private TodoDetailsServiceInterface todoDetailsService;
 
 	@RequestMapping("/addtask")
-	public String redirectAddTask() {
-		System.out.println("Hello World");
-		return "addtask";
+	public ModelAndView redirectAddTask() {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("addtask");
+		modelAndView.addObject("todoDetails", new TodoDetails());
+		return modelAndView;
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
@@ -73,6 +75,7 @@ public class TodoController {
 		else
 			httpSession.setAttribute("message", null);
 		modelAndView.addObject("todoList", todoList);
+		modelAndView.addObject("todoDetails",new TodoDetails());
 		return modelAndView;
 	}
 
