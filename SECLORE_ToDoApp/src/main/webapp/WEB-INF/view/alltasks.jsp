@@ -9,7 +9,7 @@
 	</head>
 	<body>
 		<nav>
-			<a href = "">
+			<a href = "/todo/addtask">
 				Add a TODO
 			</a>
 			<a href = "/logout">
@@ -45,7 +45,7 @@
 					<c:forEach var="todo" items="${todoList}">
 						<tr>
 							<td>
-								<form:form modelAttribute="todoDetails" name="form${todo.getTaskId()}" action="">
+								<form:form modelAttribute="todoDetails" name="form${todo.getTaskId()}" action="/todo/updatedelete" method="post">
 									<form:input path="taskId" value="${todo.getTaskId()}" hidden="hidden"/>
 									<form:input path="title" value="${todo.getTitle()}" hidden="hidden"/>
 								</form:form>

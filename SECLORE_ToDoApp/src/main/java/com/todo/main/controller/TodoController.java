@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.todo.main.domain.TodoDetails;
@@ -21,6 +22,11 @@ public class TodoController {
 
 	@Autowired
 	private TodoDetailsServiceInterface todoDetailsService;
+	
+	@RequestMapping("/addtask")
+	public String redirectAddTask() {
+		return "addtask";
+	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String addTask(@ModelAttribute TodoDetails todoDetails, HttpSession httpSession) {
@@ -67,7 +73,15 @@ public class TodoController {
 
 		modelAndView.addObject("todoList", todoList);
 		return modelAndView;
-
+	}
+	
+	@RequestMapping(value = "/updatedelete", method = RequestMethod.POST)
+	public ModelAndView redirectUpdateDelete(@ModelAttribute TodoDetails todoDetails,@RequestParam String submit) {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("todoDetails",todoDetails);
+		if(submit.equals("delete")) modelAndView.setViewName("redirect:/todo/delete");
+		else modelAndView.setViewName("edittask");
+		return modelAndView;
 	}
 
 }
