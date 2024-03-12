@@ -82,23 +82,26 @@ table {
 	border-spacing: 0 10px;
 }
 
-tr {
-	border-width: 2px;
-	border-style: solid;	
-}
-
 .header-row {
 	border-color: #333;	
+	border-width: 2px;
+	border-style: solid;
 }
 
 .PENDING {
 	border-color: #ff5555;
+	border-width: 2px;
+	border-style: solid;
 }
 
 .INPROGRESS {
 	border-color: #fad338;
+	border-width: 2px;
+	border-style: solid;
 }
 
 .COMPLETED {
 	border-color: #45a049;	
+	border-width: 2px;
+	border-style: solid;
 }

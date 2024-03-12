@@ -58,7 +58,7 @@ public class UserController {
 		String hashedPassword = BCrypt.hashpw(password, salt);
 		UserDetails userDetails = userDetailsService.validateUser(email, hashedPassword);
 		if (userDetails != null) {
-			httpSession.setAttribute("message", ("Welcome " + userDetails.getName()));
+			httpSession.setAttribute("name", (userDetails.getName()));
 			httpSession.setAttribute("user", userDetails);
 			return "redirect:/todo/alltasks";
 		}
