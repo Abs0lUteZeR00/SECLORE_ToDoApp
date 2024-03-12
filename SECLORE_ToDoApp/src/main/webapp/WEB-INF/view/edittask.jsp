@@ -16,9 +16,7 @@
 			<p>TODO title</p>
 			<form:input path="title" value="${todoDetails.getTitle()}"/>
 			<p>Description</p>
-			<form:textarea path="description">
-				<c:out value="${todoDetails.getDescription{}"></c:out>
-			</form:textarea>
+			<form:textarea path="description" value="${todoDetails.getDescription()}"/>
 			<p>Status (Currently <c:out value="${todoDetails.getStatus()}"></c:out>)</p>
 			<form:select path="status">
 				<form:option value="PENDING">Pending</form:option>
