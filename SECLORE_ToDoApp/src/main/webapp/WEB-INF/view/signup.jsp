@@ -24,7 +24,7 @@
 <table>
 <tr>
 <td>Name </td>
-<td><form:input type="text" name="name" path="name" required="required"/></td> 
+<td><form:input type="text" name="name" path="name" required="required" maxlength="30" /></td> 
 </tr>
 <tr>
 <td>Country Code </td>
@@ -37,15 +37,15 @@
 </tr>
 <tr>
 <td>Phone Number</td>
-<td><form:input type="tel" name="phoneNo" path="phoneNo" required="required"/></td>
+<td><form:input type="tel" name="phoneNo" path="phoneNo" required="required" maxlength="10"/></td>
 </tr>
 <tr>
 <td>Email</td>
-<td><form:input type="email" name="email" path="email" required="required"/></td>
+<td><form:input type="email" name="email" path="email" required="required" maxlength="30"/></td>
 </tr>
 <tr>
 <td>Password</td>
-<td><form:input id="password" type="password" name="password" path="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"  required="required"/></td>
+<td><form:input id="password" type="password" name="password" path="password" maxlength="22" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"  required="required"/></td>
 </tr>
 <tr>
 <td>Confirm Password</td>
