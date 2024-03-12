@@ -12,7 +12,7 @@
 			Add a new TODO!
 		</h2>
 		<hr>
-		<form:form modelAttribute="todoDetails" action="/todo/add">
+		<form:form modelAttribute="todoDetails" action="/todo/add" method = "post">
 			<p>TODO title</p>
 			<form:input path="title"/>
 			<p>Description</p>

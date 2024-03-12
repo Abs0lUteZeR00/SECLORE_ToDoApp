@@ -20,10 +20,11 @@
 			Your TODO List
 		</h2>
 		<hr>
+		<h4><%= session.getAttribute("message") %>></h4>
 		<c:choose>
-			<c:when test="${session.getAttribute('message') != null}">
+			<c:when test='${session.getAttribute("message") != null}'>
 				<p>
-					<c:out value="${session.getAttribute('message')"></c:out>
+					<%-- <c:out value="${session.getAttribute('message')"></c:out>  --%>	
 				</p>
 			</c:when>
 			<c:otherwise>

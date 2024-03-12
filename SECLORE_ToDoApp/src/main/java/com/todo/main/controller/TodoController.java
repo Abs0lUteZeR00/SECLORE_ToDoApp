@@ -22,9 +22,10 @@ public class TodoController {
 
 	@Autowired
 	private TodoDetailsServiceInterface todoDetailsService;
-	
+
 	@RequestMapping("/addtask")
 	public String redirectAddTask() {
+		System.out.println("Hello World");
 		return "addtask";
 	}
 
@@ -61,26 +62,28 @@ public class TodoController {
 		return "redirect:/todo/alltasks";
 	}
 
-	@RequestMapping(value = "/alltasks", method = RequestMethod.POST)
+	@RequestMapping(value = "/alltasks")
 	public ModelAndView viewTodoList(HttpSession httpSession) {
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("todolist");
+		modelAndView.setViewName("alltasks");
 		UserDetails userDetails = (UserDetails) httpSession.getAttribute("user");
 		List<TodoDetails> todoList = todoDetailsService.getTodoListByUserId(userDetails);
-
-		if (todoList == null)
+		if (todoList == null || todoList.size() == 0)
 			httpSession.setAttribute("message", "You Don't Have Any Tasks in your Todo List");
-
+		else
+			httpSession.setAttribute("message", null);
 		modelAndView.addObject("todoList", todoList);
 		return modelAndView;
 	}
-	
+
 	@RequestMapping(value = "/updatedelete", method = RequestMethod.POST)
-	public ModelAndView redirectUpdateDelete(@ModelAttribute TodoDetails todoDetails,@RequestParam String submit) {
+	public ModelAndView redirectUpdateDelete(@ModelAttribute TodoDetails todoDetails, @RequestParam String submit) {
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("todoDetails",todoDetails);
-		if(submit.equals("delete")) modelAndView.setViewName("redirect:/todo/delete");
-		else modelAndView.setViewName("edittask");
+		modelAndView.addObject("todoDetails", todoDetails);
+		if (submit.equals("delete"))
+			modelAndView.setViewName("redirect:/todo/delete");
+		else
+			modelAndView.setViewName("edittask");
 		return modelAndView;
 	}
 
