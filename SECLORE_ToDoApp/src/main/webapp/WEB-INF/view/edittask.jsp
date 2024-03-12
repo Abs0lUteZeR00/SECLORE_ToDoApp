@@ -18,10 +18,10 @@
 				<form:form modelAttribute="todoDetails" action="/todo/update"
 					method="post">
 					<p>TODO title</p>
-					<form:input path="title" value="${todoDetails.getTitle()}" />
+					<form:input path="title" value="${todoDetails.getTitle()}" maxlength="50"/>
 					<p>Description</p>
 					<form:textarea path="description"
-						value="${todoDetails.getDescription()}" />
+						value="${todoDetails.getDescription()}" maxlength="100"/>
 					<p>
 						Status (Currently
 						<c:out value="${todoDetails.getStatus()}"></c:out>

@@ -7,32 +7,37 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>All TODOs</title>
+<link rel="stylesheet" href="/css/style1.css" type="text/css">
+<script type="text/javascript" src="/scripts/stylescript" defer></script>
 </head>
 <body>
 	<nav>
-		<a href="/todo/addtask"> Add a TODO </a> <a href="/logout"> Logout
-		</a>
+		<div class="nav-item">
+			<a href="/todo/addtask"> Add a TODO </a>
+		</div>
+		<div class="nav-item">
+			<a href="/logout"> Logout</a>
+		</div>
+		 
 	</nav>
 	<h2>Your TODO List</h2>
 	<hr>
-	<h4><%= session.getAttribute("message") %>>
-	</h4>
 	<c:choose>
 		<c:when test='${session.getAttribute("message") != null}'>
 			<p>
-				<%-- <c:out value="${session.getAttribute('message')"></c:out>  --%>
+				<c:out value="${session.getAttribute('message')}"></c:out>
 			</p>
 		</c:when>
 		<c:otherwise>
 			<table>
-				<tr>
+				<tr class="header-row">
 					<th>Title</th>
 					<th>Description</th>
 					<th>Status</th>
 					<th>Actions</th>
 				</tr>
 				<c:forEach var="todo" items="${todoList}">
-					<tr>
+					<tr class="${todo.getStatus()}">
 						<td>
 								${todo.getTitle()}
 						</td>
@@ -57,6 +62,5 @@
 			</table>
 		</c:otherwise>
 	</c:choose>
-
 </body>
 </html>

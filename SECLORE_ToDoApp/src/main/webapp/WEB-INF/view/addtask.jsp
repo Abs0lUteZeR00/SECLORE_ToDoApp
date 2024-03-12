@@ -18,9 +18,9 @@
 				<form:form modelAttribute="todoDetails" action="/todo/add"
 					method="post">
 					<p>TODO title</p>
-					<form:input path="title" />
+					<form:input path="title" maxlength="50"/>
 					<p>Description</p>
-					<form:textarea path="description" />
+					<form:textarea path="description" maxlength="100"/>
 					<p>Status</p>
 					<form:select path="status">
 						<form:option value="PENDING">Pending</form:option>
