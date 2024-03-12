@@ -17,49 +17,44 @@
 		<div class="nav-item">
 			<a href="/logout"> Logout</a>
 		</div>
-		 
+
 	</nav>
 	<h2>Your TODO List</h2>
 	<hr>
-	<c:choose>
-		<c:when test='${session.getAttribute("message") != null}'>
-			<p>
-				<c:out value="${session.getAttribute('message')}"></c:out>
-			</p>
-		</c:when>
-		<c:otherwise>
-			<table>
-				<tr class="header-row">
-					<th>Title</th>
-					<th>Description</th>
-					<th>Status</th>
-					<th>Actions</th>
-				</tr>
-				<c:forEach var="todo" items="${todoList}">
-					<tr class="${todo.getStatus()}">
-						<td>
-								${todo.getTitle()}
-						</td>
-						<td>
-								${todo.getDescription()}
-						</td>
-						<td>
-								${todo.getStatus()}
-						</td>
-						<td>
-							<form:form modelAttribute="todoDetails"	action="/todo/updatedelete" method="post">
-								<form:input path="taskId" value="${todo.getTaskId()}" hidden="hidden" /> 
-								<form:input path="title" value="${todo.getTitle()}" hidden="hidden" />
-								<form:input	path="description" value="${todo.getDescription()}"	hidden="hidden" />
-								<form:input path="status" value="${todo.getStatus()}" hidden="hidden" />
-								<input type="submit" value="Edit" name="submit">
-								<input type="submit" value="Delete" name="submit">
-							</form:form>
-						</td>						
-					</tr>
-				</c:forEach>
-			</table>
-		</c:otherwise>
-	</c:choose>
+	<%String message=(String)session.getAttribute("message");%>
+	<%if(message==null){ %>
+	<table>
+		<tr class="header-row">
+			<th>Title</th>
+			<th>Description</th>
+			<th>Status</th>
+			<th>Actions</th>
+		</tr>
+		<c:forEach var="todo" items="${todoList}">
+			<tr class="${todo.getStatus()}">
+				<td>${todo.getTitle()}</td>
+				<td>${todo.getDescription()}</td>
+				<td>${todo.getStatus()}</td>
+				<td><form:form modelAttribute="todoDetails"
+						action="/todo/updatedelete" method="post">
+						<form:input path="taskId" value="${todo.getTaskId()}"
+							hidden="hidden" />
+						<form:input path="title" value="${todo.getTitle()}"
+							hidden="hidden" />
+						<form:input path="description" value="${todo.getDescription()}"
+							hidden="hidden" />
+						<form:input path="status" value="${todo.getStatus()}"
+							hidden="hidden" />
+						<input type="submit" value="Edit" name="submit">
+						<input type="submit" value="Delete" name="submit">
+					</form:form></td>
+			</tr>
+		</c:forEach>
+	</table>
+	<%} %>
+	<%if(message!=null) {%>
+	<p style="color: red;"><%=message %></p>
+	<% session.removeAttribute("message");
+} %>
 </body>
 </html>
