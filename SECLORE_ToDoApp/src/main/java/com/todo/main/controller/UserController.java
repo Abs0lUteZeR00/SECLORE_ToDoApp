@@ -27,7 +27,7 @@ public class UserController {
 	@RequestMapping(value = "/logout")
 	public String logout(HttpSession httpSession) {
 		httpSession.invalidate();
-		return "logout";
+		return "login";
 	}
 
 	@RequestMapping(value = "/signup")

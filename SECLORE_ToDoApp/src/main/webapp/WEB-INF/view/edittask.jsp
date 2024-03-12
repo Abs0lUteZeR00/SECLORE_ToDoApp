@@ -12,7 +12,7 @@
 			Edit a TODO
 		</h2>
 		<hr>
-		<form:form modelAttribute="todoDetails" action="/todo/update">
+		<form:form modelAttribute="todoDetails" action="/todo/update" method = "post">
 			<p>TODO title</p>
 			<form:input path="title" value="${todoDetails.getTitle()}"/>
 			<p>Description</p>
