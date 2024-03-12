@@ -7,9 +7,25 @@ body {
  
 nav{
 	display: flex;
-	justify-content: space-between;	
+	justify-content: space-around;
+	height: 5rem;
+	align-items: center;
+	background-color: #6d6d6d;
 }
 
+.nav-item {
+	color: white;
+}
+
+.nav-btn {
+	width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #e4e4e4;
+    color: #6d6d6d;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
 .container {
     width: 500px;
@@ -104,4 +120,8 @@ table {
 	border-color: #45a049;	
 	border-width: 2px;
 	border-style: solid;
+}
+
+.todo-list {
+	text-align: center;
 }
