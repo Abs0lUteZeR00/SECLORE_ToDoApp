@@ -14,6 +14,7 @@ public class ValidationInterceptor implements HandlerInterceptor {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
+		
 		HttpSession httpSession = request.getSession();
 		String uri = request.getRequestURI();
 

@@ -55,9 +55,7 @@ public class UserController {
 
 	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
 	public String authenticateUser(@RequestParam String email, @RequestParam String password, HttpSession httpSession) {
-		System.out.println(BCrypt.gensalt());
 		String hashedPassword = BCrypt.hashpw(password, salt);
-		System.out.println(hashedPassword +" "+ hashedPassword.length());
 		UserDetails userDetails = userDetailsService.validateUser(email, hashedPassword);
 		if (userDetails != null) {
 			httpSession.setAttribute("message", ("Welcome " + userDetails.getName()));
