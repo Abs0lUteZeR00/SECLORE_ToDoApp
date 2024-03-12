@@ -12,10 +12,13 @@
 <body>
 	<nav>
 		<div class="nav-item">
-			<a href="/todo/addtask"> Add a TODO </a>
+			<a href="/todo/addtask" class="nav-btn"> Add a TODO </a>
 		</div>
 		<div class="nav-item">
-			<a href="/logout"> Logout</a>
+			Welcome, <%=(String)session.getAttribute("name")%>
+		</div>
+		<div class="nav-item">
+			<a href="/logout" class="nav-btn"> Logout</a>
 		</div>
 
 	</nav>
@@ -23,8 +26,9 @@
 	<hr>
 	<%String message=(String)session.getAttribute("message");%>
 	<%if(message==null){ %>
-	<table>
+	<table class="todo-list">
 		<tr class="header-row">
+			<th>Task ID</th>
 			<th>Title</th>
 			<th>Description</th>
 			<th>Status</th>
@@ -32,6 +36,7 @@
 		</tr>
 		<c:forEach var="todo" items="${todoList}">
 			<tr class="${todo.getStatus()}">
+				<td>${todo.getTaskId()}</td>
 				<td>${todo.getTitle()}</td>
 				<td>${todo.getDescription()}</td>
 				<td>${todo.getStatus()}</td>
